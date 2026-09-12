@@ -9,10 +9,11 @@ import job from "./lib/cron.js";
 import clerkWebhook from "./webhooks/clerk.webhook.js";
 import authRouter from "./routes/auth.route.js";
 import messageRouter from "./routes/message.route.js";
+import { app, server } from "./lib/socket.js";
 
 dotenv.config();
 
-const app = express();
+
 const PORT = process.env.PORT || 3001;
 const publicDir = path.join(process.cwd(), "public");
 
@@ -55,7 +56,7 @@ if (fs.existsSync(publicDir)) {
   });
 }
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectDB();
 
   console.log(`Server is running on port ${PORT}`);
