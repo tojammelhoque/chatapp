@@ -8,6 +8,7 @@ import path from "path";
 import job from "./lib/cron.js";
 import clerkWebhook from "./webhooks/clerk.webhook.js";
 import authRouter from "./routes/auth.route.js";
+import messageRouter from "./routes/message.route.js";
 
 dotenv.config();
 
@@ -41,6 +42,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/api/auth", authRouter);
+app.use("/api/messages", messageRouter);
 
 // Serve Vite frontend in production
 if (fs.existsSync(publicDir)) {
