@@ -1,7 +1,9 @@
-import React from "react";
+import toast from "react-hot-toast";
 
 function ChatPage() {
-  return <div>Chatpage</div>;
+  return <div>
+    <button onClick={()=> toast.success("hello")}>clickme</button>
+  </div>;
 }
 
 export default ChatPage;
